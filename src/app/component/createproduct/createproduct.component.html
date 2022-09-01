@@ -1,0 +1,55 @@
+<div *ngIf="visible" class="custom-app-modal" xmlns="http://www.w3.org/1999/html">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div class="modal-header">
+          <h4 class="modal-title">Añadir Producto</h4>
+          <button type="button" class="close" (click)="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <!--<div class="form-group">-->
+          <!--<label>Nombre</label>-->
+          <!--<input type="text" class="form-control" #nombre required>-->
+          <!--</div>-->
+<!--          <div class="form-group">
+            <label>Nombre del Producto</label>
+            <input type="text" class="form-control" #name required>
+          </div>-->
+          <div class="form-group">
+            <label>Nombre del Producto</label>
+            <input (input)="onInputName($event.target.value)" placeholder="Introduce un nombre para el producto..." maxlength="30" formControlName="nombre" type="text" class="form-control" >
+            <span *ngIf="myForm.get('nombre').errors && myForm.get('nombre').touched" style="color:red">Ingrese un nombre válido</span>
+            <span>Número de letras: {{counterName}}</span>
+            <span class="letras">Max: 30</span>
+          </div>
+<!--          <div class="form-group">
+            <label>Descripción</label>
+            <input type="text" class="form-control" #description required>
+          </div>-->
+          <div class="form-group">
+<!--            <label>Descripción</label>-->
+<!--            <textarea placeholder="Introduce descripción..." formControlName="descripcion" type="text" class="form-control" ></textarea>-->
+<!--            <span *ngIf="myForm.get('descripcion').errors && myForm.get('descripcion').touched" style="color:red">Ingrese una descripción válida</span>-->
+
+            <label>Descripción</label>
+            <textarea (input)="onInput($event.target.value)" placeholder="Introduce descripción..." formControlName="descripcion" type="text" class="form-control" ></textarea>
+            <span>Número de letras: {{counter}}</span>
+            <br/>
+            <span *ngIf="myForm.get('descripcion').errors && myForm.get('descripcion').touched" style="color:red">Ingrese una descripción</span>
+          </div>
+          <div class="form-group">
+            <label>Añadido al Restaurante</label>
+            <input type="text" class="form-control" value="{{ProductTocreate ? ProductTocreate.nameRestaurant : ''}}" required [disabled]="ProductTocreate">
+          </div>
+          <app-photo-selector [photo]="photo" (photoSelected)="photoSelected($event)"></app-photo-selector>
+        </div>
+        <div class="modal-footer">
+          <div class="btn btn-default" (click)="closeModal()">Cancel</div>
+          <!--<input type="submit" (click)="adduser(nombre.value,email.value,username.value,password.value)" class="btn btn-success" value="Add">-->
+<!--          <input type="submit"  class="btn btn-success" value="Add" data-target="#AvanzaModal" (click)="addproduct(name.value, description.value, photo)">-->
+          <button type="submit"  class="btn btn-success" [disabled]="myForm.invalid">Añadir</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

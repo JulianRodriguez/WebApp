@@ -1,0 +1,29 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+
+
+    <!-- Login Form -->
+    <form id="form1" >
+      <!--<input class="btn btn-info btn-md" type="submit" (click)="logIn(username.value, password.value, $event)"  value="Login">-->
+
+      <input type="text"  id="username" class="fadeIn second username" #username name="username" placeholder="username" >
+      <input type="password" id="password" class="fadeIn third" #password name="password" placeholder="password">
+      <input type="submit" id="login" (click)="logIn(username.value, password.value, $event)" class="fadeIn fourth" value="Login">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a (click)="changePassword('editPasswordModal')" class="underlineHover">¿Olvidaste Tu Contraseña?</a>
+    </div>
+    <app-password></app-password>
+
+  </div>
+</div>

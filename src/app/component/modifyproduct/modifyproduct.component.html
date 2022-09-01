@@ -1,0 +1,31 @@
+<div  class="custom-app-modal" *ngIf="visible" xmlns="http://www.w3.org/1999/html">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div class="modal-header">
+          <h4 class="modal-title">Modificar Producto</h4>
+          <button type="button" class="close" (click)="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Nombre del Producto</label>
+            <input maxlength="30" formControlName="nombre" type="text" class="form-control" >
+            <span *ngIf="myForm.get('nombre').errors && myForm.get('nombre').touched" style="color:red">Ingrese un nombre válido</span>
+            <span class="letras">Max: 30</span>
+          </div>
+          <div class="form-group">
+            <label>Descripción</label>
+            <textarea formControlName="descripcion" type="text" class="form-control" ></textarea>
+          </div>
+          <app-photo-selector (photoSelected)="photoSelected($event)"></app-photo-selector>
+        </div>
+        <div class="modal-footer">
+          <div class="btn btn-default" (click)="closeModal()">Cancel</div>
+          <!--<input type="submit" (click)="adduser(nombre.value,email.value,username.value,password.value)" class="btn btn-success" value="Add">-->
+          <!--          <input type="submit"  class="btn btn-success" value="Add" data-target="#AvanzaModal" (click)="addproduct(name.value, description.value, photo)">-->
+          <button type="submit"  class="btn btn-success" >Editar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
